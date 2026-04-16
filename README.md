@@ -159,7 +159,7 @@ https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-da
 
 ## Tecnologias
 
-- Python, Pandas, NumPy, Matplotlib, Seaborn, VS Code, Jupyter
+- Python, Pandas, NumPy, Matplotlib, Seaborn, VS Code, Jupyter, nbstripout
 
 ## Autor
 
