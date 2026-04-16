@@ -121,15 +121,15 @@ https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-da
 
 ## Estrutura do Repositório
 
-├── Dataset/			# Raw Datasets
-├── Notebooks/		# EDA
-├── Images/			# Schema OULAD
-├── environment.yml	# Ambiente Conda para projeto
+├── Dataset/		    # Raw Datasets & .gitkeep
+├── Images/             # Schema OULAD
+├── Notebooks/			# EDA
+├── Presentation/		# Apresentação de Análise & .gitkeep
+├── environment.yml	    # Ambiente Conda para projeto
 ├── .gitignore			# Arquivos ignorados
-└── README.md		# Este arquivo
+└── README.md		    # Este arquivo
 
 ## Como Reproduzir
-
 
 1. **Clone o repositório:**
 
