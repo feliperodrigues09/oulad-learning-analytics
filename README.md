@@ -9,9 +9,9 @@
 
 ## Visão Geral
 
-A Open University é uma universidade pública britânica que possui o maior número de alunos de graduação no Reino Unido. É a maior instituição acadêmica do Reino Unido (e uma das maiores da Europa), com 2 milhões de alunos matriculados desde sua fundação em 1969. Como o próprio nome indica, a Open University é composta majoritariamente por alunos fora do campus (off-campus).
+A Open University é uma universidade pública britânica que possui o maior número de alunos de graduação no Reino Unido. É a maior instituição acadêmica do Reino Unido (e uma das maiores da Europa), com dois milhões de alunos matriculados desde sua fundação em 1969. Como o próprio nome indica, a Open University é composta majoritariamente por alunos fora do campus (off-campus).
 
-O dataset OULAD se apresenta como um caso de análise relevante, com a tabela de Estudantes retornando um número de 32.593 observações e muitas possibilidades de relações a serem observadas a partir do conjunto de 7 tabelas diferentes. Também foi possível notar que é um caso com oportunidades de limpeza e tratamento de dados. É um cenário de multiplas facetas que se aproxima de uma operação do mundo real e torna o caso interessante.
+O dataset OULAD se apresenta como um caso de análise relevante, com a tabela de Estudantes retornando um número de 32.593 observações e muitas possibilidades de relações a serem observadas a partir do conjunto de sete tabelas diferentes. Também foi possível notar que é um caso com oportunidades de limpeza e tratamento de dados. É um cenário de múltiplas facetas que se aproxima de uma operação do mundo real e torna o caso interessante.
 
 A intenção desta análise será tratar e analisar os dados, porém visando um retorno de inteligência para a operação. Logo, o outcome desejado é um conjunto de instruções para que a operação possa considerar melhorias futuras nos indicadores.
 
@@ -24,9 +24,9 @@ A intenção desta análise será tratar e analisar os dados, porém visando um 
 
 ### Perguntas para a análise:
 
-- Como fatores socio-economicos impactam a performance?
+- Como fatores socioeconômico impactam a performance?
 - Qual é o padrão de engajamento dos alunos?
-- Quais cursos apresentam maior desempenho e quais os de maior abandono?
+- Quais cursos apresentam maior desempenho e quais os de maior evasão?
 - No curso de maior evasão, é possível identificar o ponto de gargalo?
 - Existe correlação entre alunos que revisam mais o conteúdo com alunos de maior performance?
 
@@ -78,6 +78,8 @@ Abaixo estão as descrições de cada coluna para os 7 datasets que compõem o e
 | `age_band`             | Faixa etária do estudante.                                                                                                         |
 | `num_of_prev_attempts` | Número de vezes que o estudante tentou este curso anteriormente.                                                                   |
 | `studied_credits`      | Número total de créditos dos cursos que o estudante está cursando atualmente.                                                    |
+| `disability`           | Indicação se o aluno está dentro do grupo PcD (pessoa com deficiência).                                                         |
+| `final_result`         | Informação sobre o resultado final alcançado pelo aluno na turma inscrita.                                                       |
 
 #### **studentRegistration.csv**
 
@@ -104,7 +106,7 @@ Abaixo estão as descrições de cada coluna para os 7 datasets que compõem o e
 
 | Coluna                | Descrição                                                                                 |
 | :-------------------- | :------------------------------------------------------------------------------------------ |
-| `id_site`           | D do material do VLE.                                                                       |
+| `id_site`           | ID do material do VLE.                                                                      |
 | `code_module`       | ID do curso (identificador).                                                                |
 | `code_presentation` | ID para turma, composto de ANO + PERÍODO (ex: "2013B" para Fevereiro, "2013J" para Julho). |
 | `activity_type`     | Tipo de atividade associada ao material do curso.                                           |
@@ -128,6 +130,10 @@ https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-da
 ├── environment.yml	    # Ambiente Conda para projeto
 ├── .gitignore			# Arquivos ignorados
 └── README.md		    # Este arquivo
+
+##### Versionamento de Notebook
+
+⚠️ Este projeto está em desenvolvimento ativo. Os notebooks estão versionados sem outputs (uso de nbstripout). A versão renderizada com gráficos e tabelas será publicada ao final da Fase 5. Para executar localmente, ver "Como Reproduzir".
 
 ## Como Reproduzir
 
