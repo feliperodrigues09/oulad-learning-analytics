@@ -24,11 +24,17 @@ A intenção desta análise será tratar e analisar os dados, porém visando um 
 
 ### Perguntas para a análise:
 
-- Como fatores socioeconômico impactam a performance?
-- Qual é o padrão de engajamento dos alunos?
-- Quais cursos apresentam maior desempenho e quais os de maior evasão?
-- No curso de maior evasão, é possível identificar o ponto de gargalo?
-- Existe correlação entre alunos que revisam mais o conteúdo com alunos de maior performance?
+- Influência de fatores socioeconômico: 
+  	1. Grupos com menor imd_band e menor highest_education apresentam taxas de reprovação superiores à média?; 
+  	2. Grupos PcD's possuem taxas de evasão maiores do que a média?; 
+  	3. Existe relação entre imd_band e o grupo de alunos que realiza novas tentativas de inscrição no curso reprovado (num_of_prev_attempts)?
+
+- Quais cursos apresentam maior taxa de Distinction e quais os de maior taxa de evasão?
+- No curso de maior evasão: 
+  	1. é possível identificar o momento no semestre em que estes casos se concentram?; 
+  	2. O comportamento se repete nos semestres seguintes?
+- A amplitude de engajamento nos primeiros 30 dias — medida pelo número de recursos distintos acessados no VLE e pelo número de assessments submetidos — prediz Distinction ou evasão?
+- Existe correlação entre o número de créditos cursados no semestre (studied_credits) e a performance do aluno (final_result)?
 
 ## Dataset
 
