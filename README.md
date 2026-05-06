@@ -24,15 +24,16 @@ A intenção desta análise será tratar e analisar os dados, porém visando um 
 
 ### Perguntas para a análise:
 
-- Influência de fatores socioeconômico: 
-  	1. Grupos com menor imd_band e menor highest_education apresentam taxas de reprovação superiores à média?; 
-  	2. Grupos PcD's possuem taxas de evasão maiores do que a média?; 
-  	3. Existe relação entre imd_band e o grupo de alunos que realiza novas tentativas de inscrição no curso reprovado (num_of_prev_attempts)?
+- Influência de fatores socioeconômico:
 
+  1. Grupos com menor imd_band e menor highest_education apresentam taxas de reprovação superiores à média?;
+  2. Grupos PcD's possuem taxas de evasão maiores do que a média?;
+  3. Existe relação entre imd_band e o grupo de alunos que realiza novas tentativas de inscrição no curso reprovado (num_of_prev_attempts)?
 - Quais cursos apresentam maior taxa de Distinction e quais os de maior taxa de evasão?
-- No curso de maior evasão: 
-  	1. é possível identificar o momento no semestre em que estes casos se concentram?; 
-  	2. O comportamento se repete nos semestres seguintes?
+- No curso de maior evasão:
+
+  1. é possível identificar o momento no semestre em que estes casos se concentram?;
+  2. O comportamento se repete nos semestres seguintes?
 - A amplitude de engajamento nos primeiros 30 dias — medida pelo número de recursos distintos acessados no VLE e pelo número de assessments submetidos — prediz Distinction ou evasão?
 - Existe correlação entre o número de créditos cursados no semestre (studied_credits) e a performance do aluno (final_result)?
 
@@ -129,39 +130,47 @@ https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-da
 
 ## Estrutura do Repositório
 
-├── Dataset/		    # Raw Datasets & .gitkeep
+├── Dataset/
+│   ├── csv/            # Raw Datasets & .gitkeep
+│   └── parquet/        # Tabelas Gold exportadas (saída do pipeline)
 ├── Images/             # Schema OULAD
-├── Notebooks/			# EDA
-├── Presentation/		# Apresentação de Análise & .gitkeep
-├── environment.yml	    # Ambiente Conda para projeto
-├── .gitignore			# Arquivos ignorados
-└── README.md		    # Este arquivo
+├── Notebooks/
+│   └── ETL_OULAD.ipynb # Pipeline de dados (Bronze → Silver → Gold)
+├── Presentation/       # Apresentação de Análise & .gitkeep
+├── environment.yml     # Ambiente Conda para projeto
+├── .gitignore          # Arquivos ignorados
+└── README.md           # Este arquivo
 
 ##### Versionamento de Notebook
 
 ⚠️ Este projeto está em desenvolvimento ativo. Os notebooks estão versionados sem outputs (uso de nbstripout). A versão renderizada com gráficos e tabelas será publicada ao final da Fase 5. Para executar localmente, ver "Como Reproduzir".
 
+## Análises Planejadas
+
 ## Como Reproduzir
 
 1. **Clone o repositório:**
 
-   ```bash
-   git clone [https://github.com/feliperodrigues09/portfolio_oulad.git](https://github.com/feliperodrigues09/portfolio_oulad.git)
-   cd portfolio_oulad
-   ```
+```bash
+   git clone https://github.com/feliperodrigues09/oulad-learning-analytics.git
+   cd oulad-learning-analytics
+```
+
 2. **Crie o ambiente a partir do arquivo YAML:**
 
-   ```bash
+```bash
    conda env create -f environment.yml
-   ```
+```
+
 3. **Ative o ambiente:**
 
-   ```bash
+```bash
    conda activate portfolio_oulad
-   ```
-4. **Dados:** Baixe o dataset no [Kaggle](https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-dataoulad/data) e extraia os CSVs na pasta `Dataset/` na raiz do projeto.
+```
 
-## Análises Planejadas
+4. **Dados:** Baixe o dataset no [Kaggle](https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-dataoulad/data) e extraia os CSVs na pasta `Dataset/csv/`.
+5. **Execute o pipeline:**
+   Abra e execute o `Notebooks/ETL_OULAD.ipynb` na ordem. As tabelas Gold serão exportadas automaticamente para `Dataset/parquet/`.
 
 - [ ] Fase 1: Business Understanding
 - [ ] Fase 2: Data Understanding
