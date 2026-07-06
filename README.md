@@ -9,9 +9,9 @@
 
 ## Visão Geral
 
-A Open University é uma universidade pública britânica que possui o maior número de alunos de graduação no Reino Unido. É a maior instituição acadêmica do Reino Unido (e uma das maiores da Europa), com 2 milhões de alunos matriculados desde sua fundação em 1969. Como o próprio nome indica, a Open University é composta majoritariamente por alunos fora do campus (off-campus).
+A Open University é uma universidade pública britânica que possui o maior número de alunos de graduação no Reino Unido. É a maior instituição acadêmica do Reino Unido (e uma das maiores da Europa), com dois milhões de alunos matriculados desde sua fundação em 1969. Como o próprio nome indica, a Open University é composta majoritariamente por alunos fora do campus (off-campus).
 
-O dataset OULAD se apresenta como um caso de análise relevante, com a tabela de Estudantes retornando um número de 32.593 observações e muitas possibilidades de relações a serem observadas a partir do conjunto de 7 tabelas diferentes. Também foi possível notar que é um caso com oportunidades de limpeza e tratamento de dados. É um cenário de multiplas facetas que se aproxima de uma operação do mundo real e torna o caso interessante.
+O dataset OULAD se apresenta como um caso de análise relevante, com a tabela de Estudantes retornando um número de 32.593 observações e muitas possibilidades de relações a serem observadas a partir do conjunto de sete tabelas diferentes. Também foi possível notar que é um caso com oportunidades de limpeza e tratamento de dados. É um cenário de múltiplas facetas que se aproxima de uma operação do mundo real e torna o caso interessante.
 
 A intenção desta análise será tratar e analisar os dados, porém visando um retorno de inteligência para a operação. Logo, o outcome desejado é um conjunto de instruções para que a operação possa considerar melhorias futuras nos indicadores.
 
@@ -24,11 +24,18 @@ A intenção desta análise será tratar e analisar os dados, porém visando um 
 
 ### Perguntas para a análise:
 
-- Como fatores socio-economicos impactam a performance?
-- Qual é o padrão de engajamento dos alunos?
-- Quais cursos apresentam maior desempenho e quais os de maior abandono?
-- No curso de maior evasão, é possível identificar o ponto de gargalo?
-- Existe correlação entre alunos que revisam mais o conteúdo com alunos de maior performance?
+- Influência de fatores socioeconômico:
+
+  1. Grupos com menor imd_band e menor highest_education apresentam taxas de reprovação superiores à média?;
+  2. Grupos PcD's possuem taxas de evasão maiores do que a média?;
+  3. Existe relação entre imd_band e o grupo de alunos que realiza novas tentativas de inscrição no curso reprovado (num_of_prev_attempts)?
+- Quais cursos apresentam maior taxa de Distinction e quais os de maior taxa de evasão?
+- No curso de maior evasão:
+
+  1. é possível identificar o momento no semestre em que estes casos se concentram?;
+  2. O comportamento se repete nos semestres seguintes?
+- A amplitude de engajamento nos primeiros 30 dias — medida pelo número de recursos distintos acessados no VLE e pelo número de assessments submetidos — prediz Distinction ou evasão?
+- Existe correlação entre o número de créditos cursados no semestre (studied_credits) e a performance do aluno (final_result)?
 
 ## Dataset
 
@@ -78,6 +85,8 @@ Abaixo estão as descrições de cada coluna para os 7 datasets que compõem o e
 | `age_band`             | Faixa etária do estudante.                                                                                                         |
 | `num_of_prev_attempts` | Número de vezes que o estudante tentou este curso anteriormente.                                                                   |
 | `studied_credits`      | Número total de créditos dos cursos que o estudante está cursando atualmente.                                                    |
+| `disability`           | Indicação se o aluno está dentro do grupo PcD (pessoa com deficiência).                                                         |
+| `final_result`         | Informação sobre o resultado final alcançado pelo aluno na turma inscrita.                                                       |
 
 #### **studentRegistration.csv**
 
@@ -104,7 +113,7 @@ Abaixo estão as descrições de cada coluna para os 7 datasets que compõem o e
 
 | Coluna                | Descrição                                                                                 |
 | :-------------------- | :------------------------------------------------------------------------------------------ |
-| `id_site`           | D do material do VLE.                                                                       |
+| `id_site`           | ID do material do VLE.                                                                      |
 | `code_module`       | ID do curso (identificador).                                                                |
 | `code_presentation` | ID para turma, composto de ANO + PERÍODO (ex: "2013B" para Fevereiro, "2013J" para Julho). |
 | `activity_type`     | Tipo de atividade associada ao material do curso.                                           |
@@ -121,35 +130,47 @@ https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-da
 
 ## Estrutura do Repositório
 
-├── Dataset/		    # Raw Datasets & .gitkeep
+├── Dataset/
+│   ├── csv/            # Raw Datasets & .gitkeep
+│   └── parquet/        # Tabelas Gold exportadas (saída do pipeline)
 ├── Images/             # Schema OULAD
-├── Notebooks/			# EDA
-├── Presentation/		# Apresentação de Análise & .gitkeep
-├── environment.yml	    # Ambiente Conda para projeto
-├── .gitignore			# Arquivos ignorados
-└── README.md		    # Este arquivo
+├── Notebooks/
+│   └── ETL_OULAD.ipynb # Pipeline de dados (Bronze → Silver → Gold)
+├── Presentation/       # Apresentação de Análise & .gitkeep
+├── environment.yml     # Ambiente Conda para projeto
+├── .gitignore          # Arquivos ignorados
+└── README.md           # Este arquivo
+
+##### Versionamento de Notebook
+
+⚠️ Este projeto está em desenvolvimento ativo. Os notebooks estão versionados sem outputs (uso de nbstripout). A versão renderizada com gráficos e tabelas será publicada ao final da Fase 5. Para executar localmente, ver "Como Reproduzir".
+
+## Análises Planejadas
 
 ## Como Reproduzir
 
 1. **Clone o repositório:**
 
-   ```bash
-   git clone [https://github.com/feliperodrigues09/portfolio_oulad.git](https://github.com/feliperodrigues09/portfolio_oulad.git)
-   cd portfolio_oulad
-   ```
+```bash
+   git clone https://github.com/feliperodrigues09/oulad-learning-analytics.git
+   cd oulad-learning-analytics
+```
+
 2. **Crie o ambiente a partir do arquivo YAML:**
 
-   ```bash
+```bash
    conda env create -f environment.yml
-   ```
+```
+
 3. **Ative o ambiente:**
 
-   ```bash
+```bash
    conda activate portfolio_oulad
-   ```
-4. **Dados:** Baixe o dataset no [Kaggle](https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-dataoulad/data) e extraia os CSVs na pasta `Dataset/` na raiz do projeto.
+```
 
-## Análises Planejadas
+4. **Dados:** Baixe o dataset no [Kaggle](https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-dataoulad/data) e extraia os CSVs na pasta `Dataset/csv/`.
+5. **Execute o pipeline:**
+   Abra e execute o `Notebooks/ETL_OULAD.ipynb` na ordem. As tabelas Gold serão exportadas automaticamente para `Dataset/parquet/`.
 
 - [ ] Fase 1: Business Understanding
 - [ ] Fase 2: Data Understanding
@@ -159,7 +180,7 @@ https://www.kaggle.com/datasets/anlgrbz/student-demographics-online-education-da
 
 ## Tecnologias
 
-- Python, Pandas, NumPy, Matplotlib, Seaborn, VS Code, Jupyter
+- Python, Pandas, NumPy, Matplotlib, Seaborn, VS Code, Jupyter, nbstripout
 
 ## Autor
 
